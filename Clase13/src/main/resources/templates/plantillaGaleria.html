@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"></meta>
+    <title>Resultados encontrados</title>
+    <link href="webjars/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet" media="screen"></link>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/estilosPersonalizados.css}"/>
+</head>
+<body>
+<script inline="javascript">
+    function irgaleria(){
+        document.siguienteaccion.action="/galeria";
+        document.siguienteaccion.method="POST";
+    }
+    function volverindice(){
+        document.siguienteaccion.action="/camisetastematicas";
+        document.siguienteaccion.method="GET";
+    }
+</script>
+
+
+<div class="envoltorio">
+
+<a href="/camisetastematicas">Volver</a>
+<br/>
+<br/>
+
+
+<table th:if="${hayresultados}" class="table table-striped">
+    <thead>
+    <tr>
+        <th>Nombre</th>
+        <th>Precio</th>
+        <th>Imagen</th>
+        <th>Temas</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr th:each="camiseta : ${lista}">
+        <td th:text="${camiseta?.nombre}"></td>
+        <td th:text="${camiseta?.precio}"></td>
+        <td><img class="img-fluid" th:src="${camiseta?.link}" style="width:50%"/></td>
+        <td th:text="${camiseta?.temas}"></td>
+    </tr>
+    </tbody>
+</table>
+
+<p th:unless="${hayresultados}">La busqueda no produjo ningun resultado</p>
+<br/>
+<br/>
+
+ <form method="" action="" name="siguienteaccion">
+     <button onclick="irgaleria();" type="submit" class="btn btn-primary">Visualizar la galeria</button>
+     <button onclick="volverindice();" type="submit" class="btn btn-primary">Nueva busqueda</button>
+ </form>
+</div>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"></meta>
+    <title>Tienda de camisetas</title>
+    <link href="webjars/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet" media="screen"></link>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/estilosPersonalizados.css}"/>
+</head>
+<body>
+<div class="envoltorio">
+
+
+    <div class="envoltoriocentrado">
+        <form method="post" action="/galeria">
+            <button type="submit" class="btn btn-primary">Visualizar galeria</button>
+        </form>
+    </div>
+
+
+    <table class="table table-striped">
+        <tr>
+            <td>
+                <form method="post" action="/buscarportema">
+                    <div class="form-group">
+                        <label for="labeltema">Introduzca el tema</label>
+                        <input type="text" name="temabuscado" class="form-control" title="Tema a buscar"
+                               aria-describedby="labeltema" placeholder="Introduzca el tema"></input>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Buscar por tema</button>
+                </form>
+            </td>
+
+            <td>
+                <form method="post" action="/buscarportemayprecio">
+                    <div class="form-group">
+                        <label for="labeltema">Introduzca el tema</label>
+                        <input type="text" name="temabuscado" class="form-control" title="Tema a buscar"
+                               aria-describedby="labeltema" placeholder="Introduzca el tema"></input>
+                    </div>
+                    <div class="form-group">
+                        <label for="labelprecio">Introduzca el precio</label>
+                        <input type="text" name="preciomaximo" class="form-control" title="Precio a buscar"
+                               aria-describedby="labelprecio" placeholder="Introduzca el precico"></input>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Buscar por tema y precio</button>
+                </form>
+            </td>
+        </tr>
+    </table>
+
+
+    <div class="envoltoriocentrado">
+        <img class="text-center img-fluid" alt="Tienda de camisetas" src="/img/Collage.png" style="width:30%"/>
+    </div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,62 @@
+PUT empleados/empleado/1
+{"nombre":"Pedro Pérez","edad":25,"ciudad":"Burgos"}
+
+PUT empleados/empleado/2
+{"nombre":"Pedro García","edad":35,"ciudad":"Madrid"}
+
+PUT empleados/empleado/3
+{"nombre":"Juan Pérez","edad":41,"ciudad":"Madrid"}
+
+GET empleados/empleado/_search
+{
+  "query": {
+    "bool": {"filter": {
+        "term": {"edad": 25}
+    }}
+   }
+}
+
+GET empleados/empleado/_search
+{
+  "query": {
+    "bool": {"filter": {
+        "bool": {"should": 
+        [
+            {"term": {"ciudad": "burgos"} },
+            {"range": {"edad": {"gt": 40}} }
+        ]
+        }
+    }}
+  }
+}
+
+GET empleados/empleado/_search
+{
+  "query": {
+    "bool": {"filter": {
+        "bool": {"must": 
+        [
+            {"term": {"ciudad": "madrid"} },
+            {"range": {"edad": {"gt": 40}} }
+        ]
+        }
+    }}
+  }
+}
+
+GET empleados/empleado/_search
+{
+        "query":{"match":{"nombre":"Pérez Pedro"}}
+}
+
+GET empleados/empleado/_search
+{
+        "query":{"match_phrase":{"nombre":"Pedro Pérez"}}
+}
+
+GET empleados/empleado/_search
+{
+    "aggs" : {
+ 	"media_edad" : { "avg" : { "field" : "edad" } }
+    }
+}

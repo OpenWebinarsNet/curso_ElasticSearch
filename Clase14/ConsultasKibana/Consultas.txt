@@ -1,0 +1,32 @@
+PUT camisetas/camiseta/1
+{"nombre":"Usa made in china","precio":15,"link":"/img/Economia.png","temas":["Economía"]}
+
+PUT camisetas/camiseta/2
+{"nombre":"Reciclaje","precio":15,"link":"/img/Medioambiente.png","temas":["Medio ambiente"]}
+
+PUT camisetas/camiseta/3
+{"nombre":"Movilidad sostenible","precio":20,"link":"/img/MedioambientePolitica.png","temas":["Medio ambiente","Política"]}
+
+PUT camisetas/camiseta/4
+{"nombre":"La música alegra","precio":25,"link":"/img/Musica.png","temas":["Música"]}
+
+
+GET camisetas/camiseta/_search
+{
+  "query": {"match_phrase": {
+    "temas":"Medio ambiente"
+  }}
+}
+
+GET camisetas/camiseta/_search
+{
+  "query": {
+    "bool": {"must":[
+        {"match_phrase": 
+          {"temas":"Medio ambiente"}
+        },
+        {"range": 
+          {"precio":{"lte":30}}
+        }
+      ] }}
+}

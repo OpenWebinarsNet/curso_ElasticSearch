@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Resultados encontrados</title>
+    <link href="webjars/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet" media="screen"></link>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/estilosPersonalizados.css}"/>
+</head>
+<body>
+<div class="envoltorio">
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>Nombre</th>
+        <th>Precio</th>
+        <th>Imagen</th>
+        <th>Temas</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr th:each="camiseta : ${lista}">
+        <td th:text="${camiseta?.nombre}"></td>
+        <td th:text="${camiseta?.precio}"></td>
+        <td><img class="img-fluid" th:src="${camiseta?.link}" style="width:50%"/></td>
+        <td th:text="${camiseta?.temas}"></td>
+    </tr>
+    </tbody>
+</table>
+</div>
+</body>
+</html>
